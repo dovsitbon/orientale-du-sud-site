@@ -1,0 +1,491 @@
+@import "tailwindcss";
+
+@theme {
+  /* Charte tirée du logo (disque sable doré) et de leurs tables : crème, or, touches olive, terre cuite et rouge marocain */
+  --color-sand: #d8b878;
+  --color-sand-soft: #efe1c4;
+  --color-cream: #fbf6ec;
+  --color-ivory: #f6eddc;
+  --color-white: #ffffff;
+  --color-gold: #b89150;
+  /* Or assombri pour le texte : 6:1 sur crème, 4,8:1 sur ivoire */
+  --color-gold-ink: #74531f;
+  --color-olive: #6b7444;
+  --color-terracotta: #b5623e;
+  --color-red: #9e2b25;
+  --color-ink: #2b231c;
+  /* Brun adouci pour le texte courant : 7:1 sur crème */
+  --color-muted: #5c5045;
+  --color-line: #e5d4b3;
+
+  --font-body: var(--font-jost), "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-script: var(--font-pinyon), cursive;
+
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+[dir="rtl"] {
+  --font-body: var(--font-naskh), "Segoe UI", Tahoma, sans-serif;
+  --font-display: var(--font-amiri), "Times New Roman", serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+  [dir="rtl"] body {
+    font-weight: 400;
+  }
+  /* Grain de papier très léger */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .36 0 0 0 0 .22 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  a,
+  button,
+  label,
+  select,
+  input,
+  summary {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--color-sand);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 1px solid var(--color-gold-ink);
+    outline-offset: 3px;
+  }
+  [hidden] {
+    display: none !important;
+  }
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 400;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--color-gold-ink);
+  }
+  [dir="rtl"] .eyebrow {
+    letter-spacing: 0.02em;
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+  .display {
+    font-family: var(--font-display);
+    font-weight: 300;
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+  }
+  [dir="rtl"] .display {
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.35;
+  }
+  .script {
+    font-family: var(--font-script);
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .num {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-variant-numeric: lining-nums;
+    letter-spacing: 0.08em;
+  }
+  .nav-link {
+    font-size: 0.6875rem;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+  [dir="rtl"] .nav-link {
+    letter-spacing: 0;
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+  .btn-line,
+  .btn-ink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 3rem;
+    padding: 0.875rem 2rem;
+    font-size: 0.6875rem;
+    font-weight: 400;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    transition:
+      background-color 0.6s var(--ease-soft),
+      color 0.6s var(--ease-soft),
+      border-color 0.6s var(--ease-soft);
+  }
+  [dir="rtl"] .btn-line,
+  [dir="rtl"] .btn-ink {
+    letter-spacing: 0;
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+  .btn-line {
+    border: 1px solid currentColor;
+  }
+  .btn-line:hover {
+    background: var(--color-ink);
+    border-color: var(--color-ink);
+    color: var(--color-cream);
+  }
+  .btn-line.on-dark:hover {
+    background: var(--color-cream);
+    border-color: var(--color-cream);
+    color: var(--color-ink);
+  }
+  .btn-ink {
+    background: var(--color-ink);
+    color: var(--color-cream);
+    border: 1px solid var(--color-ink);
+  }
+  .btn-ink:hover {
+    background: var(--color-gold-ink);
+    border-color: var(--color-gold-ink);
+  }
+  .btn-ink:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .link-line {
+    background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 100% 1px;
+    padding-bottom: 0.25em;
+    transition: background-size 0.6s var(--ease-soft);
+  }
+  [dir="rtl"] .link-line {
+    background-position: 100% 100%;
+  }
+  .link-line:hover {
+    background-size: 0 1px;
+  }
+  /* Filet doré fin, repris des cadres et chandeliers */
+  .rule-gold {
+    height: 1px;
+    background: var(--color-gold);
+    opacity: 0.7;
+  }
+
+  .field {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid var(--color-line);
+    background: transparent;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    color: var(--color-ink);
+    border-radius: 0;
+    transition: border-color 0.4s;
+  }
+  select.field {
+    background-color: transparent;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232b231c' stroke-width='1'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    background-position: right 0 center;
+    padding-inline-end: 1.5rem;
+  }
+  [dir="rtl"] select.field {
+    background-position: left 0 center;
+  }
+  select.field option {
+    background: var(--color-cream);
+    color: var(--color-ink);
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-ink);
+  }
+  .field[aria-invalid="true"] {
+    border-color: var(--color-red);
+  }
+  .field::placeholder {
+    color: #8a8177;
+  }
+  .label {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  [dir="rtl"] .label {
+    letter-spacing: 0;
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--color-line);
+    min-height: 2.75rem;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition:
+      border-color 0.3s,
+      background-color 0.3s,
+      color 0.3s;
+  }
+  .chip:hover {
+    border-color: var(--color-ink);
+  }
+  .chip[aria-pressed="true"],
+  .chip:has(input:checked) {
+    border-color: var(--color-ink);
+    background: var(--color-ink);
+    color: var(--color-cream);
+  }
+  .chip:has(input:focus-visible) {
+    outline: 1px solid var(--color-gold-ink);
+    outline-offset: 3px;
+  }
+  /* Onglets de filtre façon index de catalogue */
+  .tab {
+    position: relative;
+    padding: 0.6rem 0;
+    min-height: 2.75rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    transition: color 0.4s;
+  }
+  [dir="rtl"] .tab {
+    letter-spacing: 0;
+    font-size: 0.9375rem;
+  }
+  .tab::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0.2rem;
+    height: 1px;
+    background: var(--color-ink);
+    transform: scaleX(0);
+    transition: transform 0.5s var(--ease-soft);
+  }
+  .tab:hover,
+  .tab[aria-pressed="true"],
+  .tab[aria-selected="true"] {
+    color: var(--color-ink);
+  }
+  .tab[aria-pressed="true"]::after,
+  .tab[aria-selected="true"]::after {
+    transform: scaleX(1);
+  }
+  /* Zoom très doux au survol des photos */
+  .zoom img {
+    transition: transform 1.6s var(--ease-soft);
+  }
+  .zoom:hover img,
+  .zoom:focus-visible img {
+    transform: scale(1.035);
+  }
+}
+
+/* Apparition du hero en CSS pur, sans attendre l'hydratation (le H1, élément LCP, n'est pas animé) */
+.rise {
+  animation: rise 1.4s var(--ease-soft) both;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+.scroll-line {
+  animation: scroll-line 2.4s var(--ease-soft) infinite;
+  transform-origin: top;
+}
+@keyframes scroll-line {
+  0% {
+    transform: scaleY(0);
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Rideau d'ouverture : masqué avant le premier rendu s'il a déjà été vu */
+.intro-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: var(--color-sand);
+  animation: intro-out 0.45s ease-out 1.75s forwards;
+}
+html.intro-seen .intro-curtain {
+  display: none;
+}
+@keyframes intro-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.intro-draw,
+.intro-pen {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.intro-draw {
+  animation: intro-draw var(--t, 0.6s) cubic-bezier(0.65, 0, 0.35, 1) var(--d) forwards;
+}
+/* Chaque lettre se trace puis s'encre, comme à la plume */
+.intro-pen {
+  fill-opacity: 0;
+  animation:
+    intro-draw 0.36s ease-in-out var(--d) forwards,
+    intro-ink 0.28s ease-out calc(var(--d) + 0.18s) forwards;
+}
+@keyframes intro-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes intro-ink {
+  to {
+    fill-opacity: 1;
+  }
+}
+/* Lumière chaude de fin de journée qui glisse en diagonale */
+.intro-sweep {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 240, 206, 0.55) 48%, rgba(255, 214, 150, 0.25) 54%, transparent 64%);
+  transform: translateX(-70%);
+  animation: intro-sweep 1.1s cubic-bezier(0.45, 0, 0.25, 1) 0.75s forwards;
+}
+@keyframes intro-sweep {
+  to {
+    transform: translateX(70%);
+  }
+}
+.intro-fall {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  animation: intro-fall 1s ease-out var(--d) forwards;
+}
+.intro-petal {
+  width: 14px;
+  height: 11px;
+  border-radius: 70% 0 70% 0;
+  background: #c4527a;
+  opacity: 0;
+}
+.intro-leaf {
+  width: 16px;
+  height: 8px;
+  border-radius: 100% 0 100% 0;
+  background: #7f8f4e;
+}
+@keyframes intro-fall {
+  0% {
+    opacity: 0;
+    transform: translate(0, -14px) rotate(var(--r));
+  }
+  35% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(18px, 46px) rotate(calc(var(--r) + 50deg));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .intro-curtain {
+    display: none;
+  }
+  .scroll-line {
+    animation: none;
+  }
+}
+
+/* Filigrane d'étoiles entrelacées repris du disque du logo */
+.arabesque {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cpath d='M30.0 0.0L0.0 30.0L-30.0 0.0L-0.0 -30.0ZM21.2 21.2L-21.2 21.2L-21.2 -21.2L21.2 -21.2ZM0.0 -17.0L3.8 -9.2L12.0 -12.0L9.2 -3.8L17.0 0.0L9.2 3.8L12.0 12.0L3.8 9.2L0.0 17.0L-3.8 9.2L-12.0 12.0L-9.2 3.8L-17.0 0.0L-9.2 -3.8L-12.0 -12.0L-3.8 -9.2ZM126.0 0.0L96.0 30.0L66.0 0.0L96.0 -30.0ZM117.2 21.2L74.8 21.2L74.8 -21.2L117.2 -21.2ZM96.0 -17.0L99.8 -9.2L108.0 -12.0L105.2 -3.8L113.0 0.0L105.2 3.8L108.0 12.0L99.8 9.2L96.0 17.0L92.2 9.2L84.0 12.0L86.8 3.8L79.0 0.0L86.8 -3.8L84.0 -12.0L92.2 -9.2ZM30.0 96.0L0.0 126.0L-30.0 96.0L-0.0 66.0ZM21.2 117.2L-21.2 117.2L-21.2 74.8L21.2 74.8ZM0.0 79.0L3.8 86.8L12.0 84.0L9.2 92.2L17.0 96.0L9.2 99.8L12.0 108.0L3.8 105.2L0.0 113.0L-3.8 105.2L-12.0 108.0L-9.2 99.8L-17.0 96.0L-9.2 92.2L-12.0 84.0L-3.8 86.8ZM126.0 96.0L96.0 126.0L66.0 96.0L96.0 66.0ZM117.2 117.2L74.8 117.2L74.8 74.8L117.2 74.8ZM96.0 79.0L99.8 86.8L108.0 84.0L105.2 92.2L113.0 96.0L105.2 99.8L108.0 108.0L99.8 105.2L96.0 113.0L92.2 105.2L84.0 108.0L86.8 99.8L79.0 96.0L86.8 92.2L84.0 84.0L92.2 86.8ZM78.0 48.0L48.0 78.0L18.0 48.0L48.0 18.0ZM69.2 69.2L26.8 69.2L26.8 26.8L69.2 26.8ZM48.0 31.0L51.8 38.8L60.0 36.0L57.2 44.2L65.0 48.0L57.2 51.8L60.0 60.0L51.8 57.2L48.0 65.0L44.2 57.2L36.0 60.0L38.8 51.8L31.0 48.0L38.8 44.2L36.0 36.0L44.2 38.8Z' fill='none' stroke='%23b89150' stroke-opacity='0.22' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 96px 96px;
+}
+.arabesque-light {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cpath d='M30.0 0.0L0.0 30.0L-30.0 0.0L-0.0 -30.0ZM21.2 21.2L-21.2 21.2L-21.2 -21.2L21.2 -21.2ZM0.0 -17.0L3.8 -9.2L12.0 -12.0L9.2 -3.8L17.0 0.0L9.2 3.8L12.0 12.0L3.8 9.2L0.0 17.0L-3.8 9.2L-12.0 12.0L-9.2 3.8L-17.0 0.0L-9.2 -3.8L-12.0 -12.0L-3.8 -9.2ZM126.0 0.0L96.0 30.0L66.0 0.0L96.0 -30.0ZM117.2 21.2L74.8 21.2L74.8 -21.2L117.2 -21.2ZM96.0 -17.0L99.8 -9.2L108.0 -12.0L105.2 -3.8L113.0 0.0L105.2 3.8L108.0 12.0L99.8 9.2L96.0 17.0L92.2 9.2L84.0 12.0L86.8 3.8L79.0 0.0L86.8 -3.8L84.0 -12.0L92.2 -9.2ZM30.0 96.0L0.0 126.0L-30.0 96.0L-0.0 66.0ZM21.2 117.2L-21.2 117.2L-21.2 74.8L21.2 74.8ZM0.0 79.0L3.8 86.8L12.0 84.0L9.2 92.2L17.0 96.0L9.2 99.8L12.0 108.0L3.8 105.2L0.0 113.0L-3.8 105.2L-12.0 108.0L-9.2 99.8L-17.0 96.0L-9.2 92.2L-12.0 84.0L-3.8 86.8ZM126.0 96.0L96.0 126.0L66.0 96.0L96.0 66.0ZM117.2 117.2L74.8 117.2L74.8 74.8L117.2 74.8ZM96.0 79.0L99.8 86.8L108.0 84.0L105.2 92.2L113.0 96.0L105.2 99.8L108.0 108.0L99.8 105.2L96.0 113.0L92.2 105.2L84.0 108.0L86.8 99.8L79.0 96.0L86.8 92.2L84.0 84.0L92.2 86.8ZM78.0 48.0L48.0 78.0L18.0 48.0L48.0 18.0ZM69.2 69.2L26.8 69.2L26.8 26.8L69.2 26.8ZM48.0 31.0L51.8 38.8L60.0 36.0L57.2 44.2L65.0 48.0L57.2 51.8L60.0 60.0L51.8 57.2L48.0 65.0L44.2 57.2L36.0 60.0L38.8 51.8L31.0 48.0L38.8 44.2L36.0 36.0L44.2 38.8Z' fill='none' stroke='%23ffffff' stroke-opacity='0.28' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 96px 96px;
+}

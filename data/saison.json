@@ -1,0 +1,4 @@
+{
+  "_": "Bannière saisonnière du Ramadan : passer \"active\" à false pour la masquer. Les textes sont dans locales/*.json (clé ramadan).",
+  "ramadan": { "active": true, "year": 2027 }
+}

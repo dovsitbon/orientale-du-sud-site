@@ -1,0 +1,38 @@
+{
+  "_": "Carte à emporter / à domicile. PRIX D'EXEMPLE À REMPLIR avec la cliente (en euros TTC) ; price null = « sur devis ». Noms, descriptions et unités : locales/*.json (menu.items). Ordre = ordre d'affichage.",
+  "currency": "EUR",
+  "pricesToConfirm": true,
+  "categories": ["sale", "sucre", "fruits"],
+  "items": [
+    { "id": "couscous-legumes", "cat": "sale", "img": "/media/sale/couscous-legumes.jpg", "price": 72 },
+    { "id": "couscous-poulet-amandes", "cat": "sale", "img": "/media/sale/couscous-poulet-amandes.jpg", "price": 78 },
+    { "id": "tajine-poulet-citron", "cat": "sale", "img": "/media/sale/tajine-poulet-citron.jpg", "price": 66 },
+    { "id": "seffa", "cat": "sale", "img": "/media/sale/seffa.jpg", "price": 60 },
+    { "id": "salades-marocaines", "cat": "sale", "img": "/media/sale/salades-marocaines.jpg", "price": 42 },
+    { "id": "briouates", "cat": "sale", "img": "/media/sale/briouates.jpg", "price": 36 },
+    { "id": "msemen", "cat": "sale", "img": "/media/sale/msemen.jpg", "price": 18 },
+    { "id": "nids-kadaif-crevettes", "cat": "sale", "img": "/media/sale/nids-kadaif-crevettes.jpg", "price": 48 },
+    { "id": "triangles-kadaif", "cat": "sale", "img": "/media/sale/triangles-kadaif.jpg", "price": 44 },
+    { "id": "feuilletes-cocktail", "cat": "sale", "img": "/media/sale/feuilletes-cocktail.jpg", "price": 70 },
+    { "id": "tartelettes-olives", "cat": "sale", "img": "/media/sale/tartelettes-olives.jpg", "price": 34 },
+    { "id": "bouchees-tomate-cerise", "cat": "sale", "img": "/media/sale/bouchees-tomate-cerise.jpg", "price": 32 },
+    { "id": "bouchees-briochees", "cat": "sale", "img": "/media/sale/bouchees-briochees.jpg", "price": 42 },
+    { "id": "patisseries-orientales", "cat": "sucre", "img": "/media/sucre/patisseries-orientales.jpg", "price": 60 },
+    { "id": "cornes-de-gazelle", "cat": "sucre", "img": "/media/sucre/cornes-de-gazelle.jpg", "price": 22 },
+    { "id": "chebakia", "cat": "sucre", "img": "/media/sucre/chebakia.jpg", "price": 16 },
+    { "id": "kadaif-pistache", "cat": "sucre", "img": "/media/sucre/kadaif-pistache.jpg", "price": 34 },
+    { "id": "mignardises-pistache", "cat": "sucre", "img": "/media/sucre/mignardises-pistache.jpg", "price": 30 },
+    { "id": "fekkas", "cat": "sucre", "img": "/media/sucre/fekkas.jpg", "price": 14 },
+    { "id": "verrines-fruits", "cat": "sucre", "img": "/media/sucre/verrines-fruits.jpg", "price": 36 },
+    { "id": "cupcakes", "cat": "sucre", "img": "/media/sucre/cupcakes.jpg", "price": 30 },
+    { "id": "cascade-de-fruits", "cat": "fruits", "img": "/media/fruits/cascade-de-fruits.jpg", "price": 85 },
+    { "id": "melon-garni", "cat": "fruits", "img": "/media/fruits/melon-garni.jpg", "price": 45 },
+    { "id": "plateau-fruits-fromages", "cat": "fruits", "img": "/media/fruits/plateau-fruits-fromages.jpg", "price": 65 },
+    { "id": "piece-montee-fruits", "cat": "fruits", "img": "/media/fruits/piece-montee-fruits.jpg", "price": null }
+  ],
+  "order": {
+    "_": "À CONFIRMER : délai minimum de commande (jours), créneaux de retrait / livraison, frais de livraison.",
+    "leadDays": 2,
+    "slots": ["11:00-13:00", "13:00-15:00", "17:00-19:00", "19:00-21:00"]
+  }
+}

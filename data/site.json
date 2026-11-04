@@ -1,0 +1,19 @@
+{
+  "name": "L'Orientale du Sud",
+  "url": "https://orientale-du-sud.vercel.app",
+  "phone": "06 63 93 02 52",
+  "phoneIntl": "+33 6 63 93 02 52",
+  "whatsapp": "33663930252",
+  "instagram": "https://www.instagram.com/l_orientale_du_sud/",
+  "instagramHandle": "@l_orientale_du_sud",
+  "_zone": "À CONFIRMER avec la cliente : villes réellement desservies (événements et livraison).",
+  "cities": ["Nice", "Cannes", "Antibes", "Mougins", "Grasse", "Cagnes-sur-Mer", "Saint-Laurent-du-Var", "Menton"],
+  "region": "Alpes-Maritimes",
+  "legal": {
+    "_": "À REMPLIR : raison sociale, SIRET, adresse du siège, responsable de publication.",
+    "company": "",
+    "siret": "",
+    "address": "",
+    "publisher": ""
+  }
+}

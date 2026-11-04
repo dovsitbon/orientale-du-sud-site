@@ -1,0 +1,8 @@
+{
+  "_": "À REMPLIR avec les vrais retours de la story à la une « Retours » (texte exact, prénom ou initiale, type d'événement). Passer published à true pour afficher. Aucun avis inventé.",
+  "reviews": [
+    { "text": "", "author": "", "event": "", "published": false },
+    { "text": "", "author": "", "event": "", "published": false },
+    { "text": "", "author": "", "event": "", "published": false }
+  ]
+}
